@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class ihsmarkitAssignment {
     private static List<String[]> palindromeSubstring(String s) {
+        if(s == null || s.length() == 0) return new ArrayList<>();
         List<String[]> list = new ArrayList<>();
         int n = s.length();
         for (int i = 0; i < n; i++) {
@@ -56,6 +57,11 @@ public class ihsmarkitAssignment {
         } else {
             System.out.println("Please enter the input string: \n");
             String input = sc.nextLine();
+            
+            if(input == null || input.length() == 0) {
+                System.out.println("The input string cannot be null or empty. Please run the code again. ");
+                System.exit(0);
+            }
 
             List<String[]> list = palindromeSubstring(input);
             for (String[] palindrome : list) {

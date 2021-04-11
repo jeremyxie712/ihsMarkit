@@ -46,26 +46,52 @@ public class ihsmarkitAssignment {
 
     public static void main(String[] args) {
         System.out.println("Please enter 1 or 2 for testing the code, 1 for using the default testing cases, 2 for inputting the string yourself.");
+        System.out.println("Press 0 for exit and input 'log' for all the input you have given to the program.");
+        LinkedList<String> inputs = new LinkedList<>();
         Scanner sc = new Scanner(System.in);
-        if (sc.nextLine().equals("1")) {
-            String input = "ABCBAHELLOHOWRACECARAREYOUILOVEUEVOLIIAMAIDOINGGOOD";
+        while(sc.hasNext()) {
 
-            List<String[]> list = palindromeSubstring(input);
-            for (String[] palindrome : list) {
-                System.out.println(palindrome[0] + "  " + palindrome[1] + "  " + palindrome[2]);
-            }
-        } else {
-            System.out.println("Please enter the input string: \n");
-            String input = sc.nextLine();
-            
-            if(input == null || input.length() == 0) {
-                System.out.println("The input string cannot be null or empty. Please run the code again. ");
-                System.exit(0);
-            }
+            String strInput = sc.nextLine();
+            inputs.add(strInput);
+            switch (strInput) {
+                case "1": {
+                    String input = "ABCBAHELLOHOWRACECARAREYOUILOVEUEVOLIIAMAIDOINGGOOD";
 
-            List<String[]> list = palindromeSubstring(input);
-            for (String[] palindrome : list) {
-                System.out.println(palindrome[0] + "  " + palindrome[1] + "  " + palindrome[2]);
+                    List<String[]> list = palindromeSubstring(input);
+                    for (String[] palindrome : list) {
+                        System.out.println(palindrome[0] + "  " + palindrome[1] + "  " + palindrome[2]);
+                    }
+                    break;
+                }
+                case "2": {
+                    System.out.println("Please enter the input string: \n");
+                    String input = sc.nextLine();
+
+                    if (input == null || input.length() == 0) {
+                        System.out.println("Input cannot be null or empty. ");
+                    }
+
+                    List<String[]> list = palindromeSubstring(input);
+                    for (String[] palindrome : list) {
+                        System.out.println(palindrome[0] + "  " + palindrome[1] + "  " + palindrome[2]);
+                    }
+                    break;
+                }
+                case "log":
+                    inputs.removeLast();
+                    System.out.println("The inputs are: ");
+                    for (String s : inputs) System.out.println(s);
+                    System.out.println("");
+                    System.out.println("Please press 2 for arbitrary input. ");
+                    break;
+                case "0":
+                    System.exit(0);
+                case "reset":
+                    inputs.clear();
+                    break;
+                default:
+                    System.out.println("Invalid input.");
+                    break;
             }
         }
         sc.close();

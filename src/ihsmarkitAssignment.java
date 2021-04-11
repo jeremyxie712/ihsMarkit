@@ -10,7 +10,7 @@ public class ihsmarkitAssignment {
         List<String[]> list = new ArrayList<>();
         int n = s.length();
         for (int i = 0; i < n; i++) {
-            int left = i - 1, right = i + 1, len = 1;
+            int left = i - 1, right = i + 1;
             while (left >= 0 && right < n && s.charAt(left) == s.charAt(right)) { //Retrieving all the odd-length substring
                 String[] palSub = new String[3];
                 palSub[0] = s.substring(left, right + 1);
